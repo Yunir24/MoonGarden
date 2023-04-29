@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/weatherDetailFragment"
+        android:icon="@drawable/ic_baseline_cloud_24"
+        android:title="Прогноз" />
+    <item
+        android:id="@+id/mainFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Главная" />
+    <item
+        android:id="@+id/moonCalendarFragment"
+        android:icon="@drawable/baseline_yard_black_24"
+        android:title="Лунный календарь" />
+</menu>

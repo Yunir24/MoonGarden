@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/mainFragment">
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.dauto.moongarden.fragments.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+
+    </fragment>
+    <fragment
+        android:id="@+id/weatherDetailFragment"
+        android:name="com.dauto.moongarden.fragments.WeatherDetailFragment"
+        android:label="fragment_weather_detail"
+        tools:layout="@layout/fragment_weather_detail" />
+    <fragment
+        android:id="@+id/moonCalendarFragment"
+        android:name="com.dauto.moongarden.fragments.MoonCalendarFragment"
+        android:label="fragment_moon_calendar"
+        tools:layout="@layout/fragment_moon_calendar" />
+</navigation>

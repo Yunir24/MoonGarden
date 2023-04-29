@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="4dp"
+    android:background="@color/md_theme_dark_inverseSurface"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".fragments.MonthFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp">
+
+
+        <TextView
+            android:id="@+id/textViewMonthName"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="12dp"
+            android:text="Лунный календарь на $S"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewDescription"
+            style="@style/TextAppearance.Material3.TitleMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:text="@string/test_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewMonthName" />
+
+        <TextView
+            android:id="@+id/favorableTitleTextView"
+            style="@style/TextAppearance.Material3.BodyMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="@string/favorable_unfavorable"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewDescription" />
+
+        <TableLayout
+            android:id="@+id/favorableTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/table_background"
+            android:text="@string/test_escape"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/favorableTitleTextView">
+
+            <TableRow
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/row_start_backgriund">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="@string/favorable_day" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:padding="4dp"
+                    tools:text="1, 2, 6, 13, 14, 15, 16, 1, 29, 30" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="8dp"
+                android:background="@drawable/row_start_backgriund">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="@string/unfavorable_day" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_weight="2"
+                    android:padding="4dp"
+                    android:text="1, 2, 6, 29, 30" />
+            </TableRow>
+
+
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/sowingTitleTextView"
+            style="@style/TextAppearance.Material3.BodyMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:padding="8dp"
+            android:text="@string/sowing_day"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/favorableTable" />
+
+        <TableLayout
+            android:id="@+id/tableLyaout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/table_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sowingTitleTextView">
+
+            <TableRow
+                android:layout_margin="4dp"
+                android:background="@drawable/row_start_backgriund">
+
+                <TextView
+                    android:id="@+id/tv0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="@string/cucumbers" />
+
+                <TextView
+                    android:id="@+id/tv4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="1, 2, 6, 13, 14, 15, 16, 17, 24, 25, 28, 29, 30" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_margin="4dp"
+                android:background="@drawable/row_start_backgriund">
+
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="@string/pepper_eggplant" />
+
+                <TextView
+                    android:id="@+id/tv5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="1, 2, 6, 13, 14, 15, 16, 17, 24, 25, 28, 29, 30" />
+
+            </TableRow>
+
+            <TableRow
+
+                android:layout_margin="4dp"
+                android:background="@drawable/row_start_backgriund">
+
+                <TextView
+
+                    android:id="@+id/tv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="@string/cabbage" />
+
+                <TextView
+                    android:id="@+id/tv6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="1, 2, 6, 13, 14, 15, 16, 17, 24, 25, 28, 29, 30" />
+            </TableRow>
+
+            <TableRow
+                android:layout_margin="4dp"
+                android:background="@drawable/row_start_backgriund">
+
+                <TextView
+                    android:id="@+id/tv3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="@string/garlic" />
+
+
+                <TextView
+                    android:id="@+id/tv7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+
+                    android:text="1, 2, 6, 13, 14, 15, 16, 17, 24, 25, 28, 29, 30" />
+            </TableRow>
+
+            <TableRow
+
+                android:layout_margin="4dp"
+                android:background="@drawable/row_start_backgriund">
+
+                <TextView
+                    android:id="@+id/tv12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="@string/root_vegetables" />
+
+
+                <TextView
+                    android:id="@+id/tv71"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="1, 2, 6, 13, 14, 15, 16, 17, 24, 25, 28, 29, 30" />
+            </TableRow>
+
+            <TableRow
+
+                android:layout_margin="4dp"
+                android:background="@drawable/row_start_backgriund">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="@string/tomato" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="1, 2, 6, 13, 14, 15, 16, 17, 24, 25, 28, 29, 30" />
+            </TableRow>
+
+            <TableRow
+                android:layout_margin="4dp"
+                android:background="@drawable/row_start_backgriund">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="@string/onion" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="1, 2, 6, 13, 14, 15, 16, 17, 24, 25, 28, 29, 30" />
+            </TableRow>
+
+            <TableRow
+
+                android:layout_margin="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:background="@drawable/row_start_backgriund"
+                    android:text="@string/different_greens" />
+
+
+                <TextView
+
+                    android:background="@drawable/row_start_backgriund"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="1, 2, 6, 13, 14, 15, 16, 17, 24, 25, 28, 29, 30" />
+            </TableRow>
+
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/flowersTitleTextView"
+            style="@style/TextAppearance.Material3.BodyMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:padding="4dp"
+            android:text="@string/favorable_day_for_flowers"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tableLyaout" />
+
+        <TableLayout
+            android:id="@+id/flowersTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/table_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/flowersTitleTextView">
+
+            <TableRow
+
+                android:background="@drawable/row_start_backgriund">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="@string/annuals" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:padding="4dp"
+                    android:text="1, 2, 6, 13, 14, 15, 16, 17, 24, 25, 28, 29, 30" />
+            </TableRow>
+
+            <TableRow android:background="@drawable/row_start_backgriund">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="@string/twoyear_longterm" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:padding="4dp"
+                    android:text="1, 2, 6, 13, 14, 15, 16, 17, 24, 25, 28, 29, 30" />
+            </TableRow>
+
+            <TableRow android:background="@drawable/row_start_backgriund">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="@string/bulbous_tunerous" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:padding="4dp"
+                    android:text="1, 2, 6, 13, 14, 15, 16, 17, 24, 25, 28, 29, 30" />
+            </TableRow>
+
+
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/seedlingsTitleTextView"
+            style="@style/TextAppearance.Material3.BodyMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="@string/seedlings"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/flowersTable" />
+
+        <TableLayout
+            android:id="@+id/seedlingsTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/table_background"
+            android:text="@string/test_escape"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/seedlingsTitleTextView">
+
+
+            <TableRow
+
+                android:background="@drawable/row_start_backgriund">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="@string/fruit_trees" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="1, 2, 6, 13, 14, 15, 16, 17, 24, 25, 28, 29, 30" />
+            </TableRow>
+
+            <TableRow
+
+                android:background="@drawable/row_start_backgriund">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="@string/grape" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="1, 2, 6, 13, 14, 15, 16, 17, 24, 25, 28, 29, 30" />
+            </TableRow>
+
+            <TableRow
+
+                android:background="@drawable/row_start_backgriund">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="@string/goosebery" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="1, 2, 6, 13, 14, 15, 16, 17, 24, 25, 28, 29, 30" />
+            </TableRow>
+
+            <TableRow
+
+                android:background="@drawable/row_start_backgriund">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="@string/raspberry" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="1, 2, 6, 13, 14, 15, 16, 17, 24, 25, 28, 29, 30" />
+            </TableRow>
+
+            <TableRow
+
+                android:background="@drawable/row_start_backgriund">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="@string/strawberry" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="1, 2, 6, 13, 14, 15, 16, 17, 24, 25, 28, 29, 30" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    style="@style/TextAppearance.Material3.BodyMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:padding="8dp"
+                    android:text="@string/rooting_digging" />
+
+            </TableRow>
+
+            <TableRow android:background="@drawable/row_start_backgriund">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="1, 2, 6, 13, 14, 15, 16, 17, 24" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    style="@style/TextAppearance.Material3.BodyMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    android:padding="8dp"
+                    android:text="@string/grafting" />
+            </TableRow>
+
+            <TableRow android:background="@drawable/row_start_backgriund">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="1, 2, 6, 13, 14, 15, 16, 17, 24" />
+            </TableRow>
+
+        </TableLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

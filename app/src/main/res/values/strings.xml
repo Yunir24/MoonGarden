@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">MoonGarden</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="test_description">После бесконечных майских посевов, посадок, высадки рассады в июне можно немного расслабиться и, оглянувшись вокруг, полюбоваться садом, богато украшенным цветущими травянистыми многолетниками, декоративными кустарниками. Они настраивают нас на позитив, которого нам сейчас так не хватает.</string>
+    <string name="test_escape">\n \n \n \n \n</string>
+    <string name="cucumbers">Oгурцы</string>
+    <string name="favorable_unfavorable">Благоприятные и запрещенные дни для пересадки растений</string>
+    <string name="favorable_day">Благоприятные дни для пересадки</string>
+    <string name="unfavorable_day">Запрещенные дни для посадки</string>
+    <string name="sowing_day">Благоприятные посадочные дни для посева семян</string>
+    <string name="pepper_eggplant">Баклажаны, перец</string>
+    <string name="cabbage">Капуста</string>
+    <string name="garlic">Чеснок</string>
+    <string name="root_vegetables">Корнеплоды</string>
+    <string name="tomato">Томаты</string>
+    <string name="onion">Лук</string>
+    <string name="different_greens">Зелень разная</string>
+    <string name="favorable_day_for_flowers">Благоприятные дни для цветов</string>
+    <string name="annuals">Однолетние цветы</string>
+    <string name="twoyear_longterm">Двулетние и многолтение цветы</string>
+    <string name="bulbous_tunerous">Луковичные и клубневые цветы</string>
+    <string name="strawberry">Клубника, земляника</string>
+    <string name="raspberry">Малина, ежевика</string>
+    <string name="goosebery">Крыжовник, смородина</string>
+    <string name="grape">Виноград</string>
+    <string name="fruit_trees">Плодовые деревья</string>
+    <string name="grafting">Прививка</string>
+    <string name="rooting_digging">Укоренение черенков, прикапывание побегов</string>
+    <string name="seedlings">Дни для посадки саженцев, черенкования и прививок</string>
+</resources>
