@@ -1,16 +1,18 @@
 package com.dauto.data
 
 import android.app.Application
+import android.util.Log
 import com.dauto.data.network.ApiFactory
 import com.dauto.data.storage.AppDatabase
 import com.dauto.domain.MoonCalendarRepository
 import com.dauto.domain.moonentity.MonthAndDays
 import com.dauto.domain.moonentity.MoonDay
-import com.dauto.domain.weatherentity.WeatherItem
+import com.dauto.domain.weatherentity.CurrentWeather
+import com.dauto.domain.weatherentity.WeatherDayWithHours
 
 class MoonCalendarRepositoryImpl(application: Application) : MoonCalendarRepository {
 
-
+    private val tokken =  BuildConfig.TOKEN
     private val querry = "53.334301, 58.518090"
     private val dayz = "5"
     private val lang = "ru"
@@ -36,13 +38,35 @@ class MoonCalendarRepositoryImpl(application: Application) : MoonCalendarReposit
 
     }
 
-    override suspend fun getCurrentWeather(): WeatherItem {
-            val weather = apiService.getCurrentWeather(querry, lang, tokken, dayz)
-            weatherDao.addWeatherDay(weather.toDbModel())
-            return weather.toEntity()
+    override suspend fun getCurrentWeather(): CurrentWeather {
+//        uploadWeather() 35/34
+        return weatherDao.getCurrentWeather().toEntity()
+
+    }
+
+    override suspend fun getWeatherList(): List<WeatherDayWithHours> {
+        return mapDayListDbModelToEntity(weatherDao.getForecastWeather())
     }
 
 
+    override suspend fun updateCurrentWeather() {
+        uploadWeather()
+    }
+
+
+    private suspend fun uploadWeather() {
+
+        try {
+            val weather = apiService.getCurrentWeather(querry, lang, tokken, dayz)
+            val current = convertWeatherDtoToDbModel(weather)
+            val daylist = mapDtoDayListToDbModelList(weather)
+            val hourList = mapDtoHoursListToDbModelList(weather)
+            weatherDao.insertWeatherItem(current, daylist, hourList)
+        } catch (e: Exception) {
+            Log.d("DebugApp", e.toString())
+        }
+
+    }
 
 
 }

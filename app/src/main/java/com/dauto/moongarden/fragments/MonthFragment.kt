@@ -30,9 +30,34 @@ class MonthFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        sharedViewModel.moonMonth.observe(viewLifecycleOwner){
-//            binding.textViewForMonth.text = it.month.description
-//        }
+        sharedViewModel.getMonthInfo("may")
+        sharedViewModel.moonMonth.observe(viewLifecycleOwner){
+            with(binding){
+               textViewDescription.text=it.month.description
+                favorableTextView.text=it.month.dayGoodBad.favorable
+                unfavorableTextView.text=it.month.dayGoodBad.unfavorable
+                cucumerTV.text=it.month.daysForSowing.cucumbers
+                eggplantTv.text=it.month.daysForSowing.pepperEggplant
+                cabbageTV.text=it.month.daysForSowing.cabbage
+                garlicTV.text=it.month.daysForSowing.garlic
+                rootVegetablesTv.text=it.month.daysForSowing.rootVegetables
+                tomatoTV.text=it.month.daysForSowing.tomato
+                onionTV.text=it.month.daysForSowing.onion
+                differentGreenTv.text=it.month.daysForSowing.differentGreens
+                annualsTV.text=it.month.flowers.annuals
+                twoyearFlowersTv.text=it.month.flowers.twoyearAndLongterm
+                bulbousTV.text=it.month.flowers.bulbousAndTuberous
+                fruitTreeTV.text=it.month.seedlings.fruitTrees
+                grapeTV.text=it.month.seedlings.grape
+                gooseberryTV.text=it.month.seedlings.gooseberry
+                raspberryTV.text=it.month.seedlings.raspberry
+                strawberryTV.text=it.month.seedlings.strawberry
+                rootingDiggingTV.text=it.month.seedlings.rooting_digging
+                graftingTV.text=it.month.seedlings.grafting
+
+
+            }
+        }
     }
 
     companion object {

@@ -23,6 +23,7 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        sharedViewModel.getWeather()
         Log.d("viewCheck", "mainfrag create")
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
@@ -30,13 +31,21 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sharedViewModel.getWeather()
-        sharedViewModel.weather.observe(viewLifecycleOwner){
-            Log.d("viewCheck",it.location.name)
+        sharedViewModel.getMoonDay("6")
+        binding.buttonGetWeather.setOnClickListener {
+            sharedViewModel.updateCurrentWeather()
         }
-//        sharedViewModel.moonDay.observe(viewLifecycleOwner){
-//            binding.textViewDayInfo.text=it.description
-//        }
+        sharedViewModel.currentWeather.observe(viewLifecycleOwner) {
+            with(binding) {
+                temperatureTV.text = it.temperature
+                lastUpdate.text = it.lastUpdate
+                conditionTextTV.text=it.condition.text
+                locationTV.text=it.location
+            }
+        }
+        sharedViewModel.moonDay.observe(viewLifecycleOwner){
+            binding.MoonDayInfoTV.text=it.description
+        }
     }
 
     override fun onDestroy() {

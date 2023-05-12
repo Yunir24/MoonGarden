@@ -1,4 +1,4 @@
-package com.dauto.data.storage.model
+package com.dauto.data.storage.model.moonCalendar
 
 import androidx.room.Embedded
 import androidx.room.Relation

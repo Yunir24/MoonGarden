@@ -28,4 +28,7 @@
     <string name="grafting">Прививка</string>
     <string name="rooting_digging">Укоренение черенков, прикапывание побегов</string>
     <string name="seedlings">Дни для посадки саженцев, черенкования и прививок</string>
+    <string name="default_last_update">22:00 24-12-12</string>
+    <string name="default_location">Ufa, Bashkortostan</string>
+    <string name="update">Обновить</string>
 </resources>

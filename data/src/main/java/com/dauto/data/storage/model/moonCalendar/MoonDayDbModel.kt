@@ -1,6 +1,5 @@
-package com.dauto.data.storage.model
+package com.dauto.data.storage.model.moonCalendar
 
-import androidx.annotation.NonNull
 import androidx.room.*
 
 

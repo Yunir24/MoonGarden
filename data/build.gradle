@@ -14,12 +14,15 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
-        kapt{
-            arguments{
-                arg("room.schemaLocation", "$projectDir/schemas")
-            }
-        }
+//        kapt{
+//            arguments{
+//                arg("room.schemaLocation", "$projectDir/schemas")
+//            }
+//        }
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
 
+        buildConfigField "String", "TOKEN", "\"${properties.getProperty("TOKEN")}\""
     }
 
     buildTypes {
@@ -42,6 +45,7 @@ dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.8.20'
     implementation "androidx.room:room-runtime:2.5.1"
     implementation "androidx.room:room-ktx:2.5.1"
+    implementation 'androidx.lifecycle:lifecycle-livedata-core-ktx:2.6.1'
     kapt "androidx.room:room-compiler:2.5.1"
     implementation 'com.squareup.okhttp3:okhttp:4.10.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'

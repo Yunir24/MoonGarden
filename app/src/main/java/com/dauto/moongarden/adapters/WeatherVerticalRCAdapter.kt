@@ -3,12 +3,12 @@ package com.dauto.moongarden.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.dauto.domain.weatherentity.DayWithHour
+import com.dauto.domain.weatherentity.Day
 import com.dauto.moongarden.databinding.WeatherItemVericalBinding
 import com.dauto.moongarden.viewholders.VerticalWeatherViewHolder
 
 class WeatherVerticalRCAdapter() : RecyclerView.Adapter<VerticalWeatherViewHolder>(){
-    val list = listOf<DayWithHour>()
+    val list = listOf<Day>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VerticalWeatherViewHolder {
         val from = LayoutInflater.from(parent.context)

@@ -1,9 +1,9 @@
 package com.dauto.data.storage
 
 import androidx.room.*
-import com.dauto.data.storage.model.MonthAndDayModel
-import com.dauto.data.storage.model.MoonDayDbModel
-import com.dauto.data.storage.model.MoonMonthDbModel
+import com.dauto.data.storage.model.moonCalendar.MonthAndDayModel
+import com.dauto.data.storage.model.moonCalendar.MoonDayDbModel
+import com.dauto.data.storage.model.moonCalendar.MoonMonthDbModel
 
 @Dao
 interface MoonСalendarDao {

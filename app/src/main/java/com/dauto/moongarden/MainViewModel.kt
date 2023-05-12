@@ -10,7 +10,9 @@ import com.dauto.data.MoonCalendarRepositoryImpl
 import com.dauto.domain.moonentity.MonthAndDays
 import com.dauto.domain.moonentity.MoonDay
 import com.dauto.domain.usecase.*
-import com.dauto.domain.weatherentity.WeatherItem
+import com.dauto.domain.weatherentity.CurrentWeather
+import com.dauto.domain.weatherentity.WeatherDayWithHours
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -22,7 +24,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val getMoonDayUseCase = GetMoonDayUseCase(calendarRepository)
     private val getMoonDayListUseCase = GetMoonDayListUseCase(calendarRepository)
     private val getMoonMonthUseCase = GetMoonMonthUseCase(calendarRepository)
+
     private val getWeatherUseCase = GetCurrentWeatherUseCase(calendarRepository)
+    private val getWeatherDayListUseCase = GetWeatherDayListUseCase(calendarRepository)
+    private val updateCurrentWeatherUseCase= UpdateCurrentWeatherUseCase(calendarRepository)
 
     private var _moonDay = MutableLiveData<MoonDay>()
     val moonDay: LiveData<MoonDay>
@@ -30,13 +35,15 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private var _moonMonth = MutableLiveData<MonthAndDays>()
     val moonMonth: LiveData<MonthAndDays>
         get() = _moonMonth
-    private var _weather = MutableLiveData<WeatherItem>()
-    val weather: LiveData<WeatherItem>
-        get() = _weather
+    private var _weatherCurrent = MutableLiveData<CurrentWeather>()
+    val currentWeather: LiveData<CurrentWeather>
+        get() = _weatherCurrent
+    private var _forecastWeatherList = MutableLiveData<List<WeatherDayWithHours>>()
+    val forecastWeatherList: LiveData<List<WeatherDayWithHours>>
+        get() = _forecastWeatherList
 
 
     init {
-        Log.d("viewCheck", "i'm alive")
     }
 
     override fun onCleared() {
@@ -46,14 +53,27 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun getWeather(){
         viewModelScope.launch {
-          _weather.value =  getWeatherUseCase.invoke()
+            _weatherCurrent.value= getWeatherUseCase.invoke()
         }
     }
 
     fun getMoonDay(dayId: String) {
         viewModelScope.launch{
-            val day = getMoonDayUseCase.invoke(dayId)
+            val day = getMoonDayUseCase.invoke(getCurrentDay())
             _moonDay.value = day
+        }
+    }
+
+
+    fun getForecastList(){
+
+    }
+
+    fun updateCurrentWeather(){
+        viewModelScope.launch{
+            updateCurrentWeatherUseCase.invoke()
+            delay(2000)
+            getWeather()
         }
     }
 
@@ -67,12 +87,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun getCurrentDay(): String {
         val forDay = SimpleDateFormat(/* pattern = */ "dd-MM-yy", Locale.US)
-        return forDay.format(Date(23,1,1))
+        return forDay.format(Date())
     }
 
     fun getCurrentMonth(): String {
         val forMonth = SimpleDateFormat(/* pattern = */ "MMMM ", Locale.US)
-        return forMonth.format(Date(23,0,1))
+        return forMonth.format(Date())
     }
 
 }

@@ -8,7 +8,7 @@ data class DayWeatherDto(
     @SerializedName("mintemp_c")
     val mintemp: String,
     @SerializedName("daily_chance_of_rain")
-    val chanceRain: String,
+    val chanceRain: Int,
     @SerializedName("condition")
     val condition: ConditionsDto
 )

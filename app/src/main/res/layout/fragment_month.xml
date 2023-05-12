@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="12dp"
-            android:text="Лунный календарь на $S"
+            android:text="Лунный календарь на май"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -74,6 +74,7 @@
                     android:text="@string/favorable_day" />
 
                 <TextView
+                    android:id="@+id/favorableTextView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
@@ -93,6 +94,7 @@
                     android:text="@string/unfavorable_day" />
 
                 <TextView
+                    android:id="@+id/unfavorableTextView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
@@ -137,7 +139,7 @@
                     android:text="@string/cucumbers" />
 
                 <TextView
-                    android:id="@+id/tv4"
+                    android:id="@+id/cucumerTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -151,14 +153,13 @@
                 android:background="@drawable/row_start_backgriund">
 
                 <TextView
-                    android:id="@+id/tv1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="4dp"
                     android:text="@string/pepper_eggplant" />
 
                 <TextView
-                    android:id="@+id/tv5"
+                    android:id="@+id/eggplantTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -174,14 +175,13 @@
 
                 <TextView
 
-                    android:id="@+id/tv2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="4dp"
                     android:text="@string/cabbage" />
 
                 <TextView
-                    android:id="@+id/tv6"
+                    android:id="@+id/cabbageTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -202,7 +202,7 @@
 
 
                 <TextView
-                    android:id="@+id/tv7"
+                    android:id="@+id/garlicTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -217,7 +217,6 @@
                 android:background="@drawable/row_start_backgriund">
 
                 <TextView
-                    android:id="@+id/tv12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="4dp"
@@ -225,7 +224,7 @@
 
 
                 <TextView
-                    android:id="@+id/tv71"
+                    android:id="@+id/rootVegetablesTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -246,6 +245,7 @@
 
 
                 <TextView
+                    android:id="@+id/tomatoTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -265,6 +265,7 @@
 
 
                 <TextView
+                    android:id="@+id/onionTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -274,19 +275,18 @@
 
             <TableRow
 
+                android:background="@drawable/row_start_backgriund"
                 android:layout_margin="4dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="4dp"
-                    android:background="@drawable/row_start_backgriund"
                     android:text="@string/different_greens" />
 
 
                 <TextView
-
-                    android:background="@drawable/row_start_backgriund"
+                    android:id="@+id/different_greenTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -330,6 +330,7 @@
 
 
                 <TextView
+                    android:id="@+id/annualsTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
@@ -348,6 +349,7 @@
 
 
                 <TextView
+                    android:id="@+id/twoyearFlowersTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
@@ -366,6 +368,7 @@
 
 
                 <TextView
+                    android:id="@+id/bulbousTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
@@ -414,6 +417,7 @@
 
 
                 <TextView
+                    android:id="@+id/fruitTreeTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -434,6 +438,7 @@
 
 
                 <TextView
+                    android:id="@+id/grapeTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -454,6 +459,7 @@
 
 
                 <TextView
+                    android:id="@+id/gooseberryTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -474,6 +480,7 @@
 
 
                 <TextView
+                    android:id="@+id/raspberryTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -494,6 +501,7 @@
 
 
                 <TextView
+                    android:id="@+id/strawberryTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -516,6 +524,7 @@
             <TableRow android:background="@drawable/row_start_backgriund">
 
                 <TextView
+                    android:id="@+id/rootingDiggingTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="4dp"
@@ -538,6 +547,7 @@
             <TableRow android:background="@drawable/row_start_backgriund">
 
                 <TextView
+                    android:id="@+id/graftingTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="4dp"

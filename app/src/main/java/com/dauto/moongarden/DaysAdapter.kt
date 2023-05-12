@@ -8,20 +8,10 @@ import com.dauto.domain.moonentity.MoonDay
 class DaysAdapter() : RecyclerView.Adapter<DaysViewHolder>() {
 
 
-    private val moonDayList = mutableListOf<MoonDay>()
 
-    init {
-        for (i in 1..10){
-            moonDayList.add(
-                MoonDay("0$i-05-23",
-            "Луна в затмении",
-                    "В феврале мы всерьез задумываемся о выращивании рассады. Но прежде чем бросить в землю первые семена, реально оцениваем нашу возможность создать для рассады условия близкие к оптимальным. Выбирая сроки посева, не забываем неоспоримую истину: ранняя рассада развивается медленнее рассады, посеянной в более поздние сроки"
-                )
-            )
-        }
-    }
 
-    var _moonDayList: List<MoonDay> = listOf()
+
+    var moonDayList: List<MoonDay> = listOf()
         set(value){
             field=value
             notifyDataSetChanged()

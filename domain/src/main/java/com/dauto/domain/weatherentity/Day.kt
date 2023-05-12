@@ -2,8 +2,16 @@ package com.dauto.domain.weatherentity
 
 data class Day(
 
-    val maxtemp: String,
-    val mintemp: String,
-    val chanceRain: String,
-    val condition: Condition
+    val date: String,
+
+    val maxTemp: String,
+
+    val minTemp: String,
+
+    val chanceRain: Int,
+
+    val condition: Condition,
+
+    val astro: Astro,
+
 )

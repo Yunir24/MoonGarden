@@ -34,9 +34,9 @@ class DayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.dayListRcView.adapter=daysAdapter
-//        sharedViewModel.moonMonth.observe(viewLifecycleOwner){
-//            daysAdapter.moonDayList = it.daysList
-//        }
+        sharedViewModel.moonMonth.observe(viewLifecycleOwner){
+            daysAdapter.moonDayList = it.daysList
+        }
     }
 
     override fun onDestroy() {

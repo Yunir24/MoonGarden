@@ -1,13 +1,14 @@
-package com.dauto.data.storage.model
+package com.dauto.data.storage.model.weatherDay
 
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "weather_day")
-data class WeatherDay (
+@Entity(tableName = "current_weather")
+data class CurrentWeatherDbModel (
     @PrimaryKey()
     val id:Int = 0,
+    val location: String,
     val lastUpdate: String,
 
     val temperature: String,

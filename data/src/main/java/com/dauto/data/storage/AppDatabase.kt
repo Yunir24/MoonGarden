@@ -4,13 +4,20 @@ import android.app.Application
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.dauto.data.storage.model.MoonDayDbModel
-import com.dauto.data.storage.model.MoonMonthDbModel
-import com.dauto.data.storage.model.WeatherDao
-import com.dauto.data.storage.model.WeatherDay
+import com.dauto.data.storage.model.moonCalendar.MoonDayDbModel
+import com.dauto.data.storage.model.moonCalendar.MoonMonthDbModel
+import com.dauto.data.storage.model.weatherDay.CurrentWeatherDbModel
+import com.dauto.data.storage.model.weatherDay.HoursDbModel
+import com.dauto.data.storage.model.weatherDay.WeatherDayDbModel
 
 @Database(
-    entities = [MoonDayDbModel::class, MoonMonthDbModel::class, WeatherDay::class], version = 1
+    entities = [
+        MoonDayDbModel::class,
+        MoonMonthDbModel::class,
+        CurrentWeatherDbModel::class,
+        HoursDbModel::class,
+        WeatherDayDbModel::class
+    ], version = 1
 )
 abstract class AppDatabase : RoomDatabase() {
 
@@ -24,16 +31,16 @@ abstract class AppDatabase : RoomDatabase() {
         private val lock = Any()
 
 
-
         fun getInstance(application: Application): AppDatabase {
             INSTANCE?.let {
                 return it
             }
-            synchronized(lock){
-                INSTANCE?.let{
+            synchronized(lock) {
+                INSTANCE?.let {
                     return it
                 }
                 val db = Room.databaseBuilder(application, AppDatabase::class.java, DB_NAME)
+                    .createFromAsset("sul/moon_calendar2.db")
                     .build()
                 INSTANCE = db
                 return db
