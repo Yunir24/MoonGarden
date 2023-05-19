@@ -18,6 +18,15 @@ data class WeatherDayDbModel(
     @ColumnInfo(name = "rain_chance")
     val chanceRain: Int,
 
+    @ColumnInfo(name = "snow_chance")
+    val chanceSnow: Int,
+
+    @ColumnInfo(name = "wind")
+    val wind: String,
+
+    @ColumnInfo(name = "humidity")
+    val humidity: String,
+
     @Embedded
     val condition: ConditionDbModel,
 

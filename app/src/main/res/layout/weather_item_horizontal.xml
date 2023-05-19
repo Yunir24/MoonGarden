@@ -23,14 +23,15 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:gravity="center"
-            android:text="12:00" />
+            tools:text="12:00" />
 
         <ImageView
             android:id="@+id/imageViewIconHorizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="32dp"
             android:layout_margin="4dp"
-            tools:srcCompat="@drawable/ic_baseline_cloud_24" />
+            tools:srcCompat="@drawable/ic_baseline_cloud_24"
+            android:contentDescription="@string/weather_item_icon" />
 
         <TextView
             android:id="@+id/temperature_item_textView"
@@ -39,7 +40,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:gravity="center"
-            android:text="2\u2103" />
+            tools:text="2\u2103" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

@@ -10,11 +10,11 @@ data class CurrentWeather(
 
     val condition: Condition,
 
-    val wind: Int,
+    val wind: String,
 
-    val humidity: Int,
+    val humidity: String,
 
-    val cloud: Int,
+    val cloud: String,
 
-    val feelsLike: Int,
+    val feelsLike: String,
 )

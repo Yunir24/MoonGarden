@@ -13,11 +13,11 @@
         android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineHelper"
+            android:id="@+id/guidelineHorizontalHelper"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.25"
+            app:layout_constraintGuide_percent="0.3"
             />
 
         <TextView
@@ -26,7 +26,17 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/guidelineHelper"
+            app:layout_constraintEnd_toStartOf="@id/guidelineHorizontalHelper"
+            android:layout_margin="12dp"
+            tools:text="02-01-23"/>
+        <TextView
+            android:id="@+id/moonInfoTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/guidelineHorizontalHelper"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/dayInfoTV"
             android:layout_margin="12dp"
             tools:text="02-01-23"/>
 
@@ -34,9 +44,10 @@
             android:id="@+id/moonPhaseTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/dateTV"
-            app:layout_constraintEnd_toEndOf="@id/guidelineHelper"
+            app:layout_constraintEnd_toEndOf="@id/guidelineHorizontalHelper"
             android:layout_margin="8dp"
             tools:text="Растущая Луна           в Весах            с 17:40 04.05.2023 Луна в Скорпионе
 "/>
@@ -45,12 +56,12 @@
             android:id="@+id/dayInfoTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/guidelineHelper"
+            app:layout_constraintTop_toBottomOf="@id/moonInfoTV"
+            app:layout_constraintStart_toEndOf="@id/guidelineHorizontalHelper"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="8dp"
-            android:padding="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             tools:text="Этот метод убирает необходимость делать миграции вручную, если версия бд изменится, то она удалит старую и создаст новую. Также посмотри, что при любых изменениях (добавление или удаление полей из бд) версию меняешь, а то будет крашиться тоже. Создавать из ассетов звучит проще, но мне на практике не пригождалось ни первый ни второй варe there but it simole text"/>
 
 

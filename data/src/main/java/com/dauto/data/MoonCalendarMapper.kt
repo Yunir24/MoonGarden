@@ -5,12 +5,15 @@ import com.dauto.data.storage.model.moonCalendar.*
 import com.dauto.data.storage.model.weatherDay.*
 import com.dauto.domain.moonentity.*
 import com.dauto.domain.weatherentity.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 //--------------- map calendar models ----------------
 
 fun MoonDayDbModel.toEntity() = MoonDay(
-    day = day,
+    day = formattedMoonDate(day),
     moonPhase = moonPhase ?: "",
+    moonInfo = moonInfo?.trim() ?: "",
     description = collectColumnToDescription(this)
 )
 
@@ -59,7 +62,7 @@ private fun FlowersDbModel.toEntity() = Flowers(
 )
 
 private fun SeedlingsDbModel.toEntity() = Seedlings(
-    isEmpty = (isEmpty == 0),
+    isEmpty = (isEmpty == 1),
     fruitTrees = fruitTrees ?: "",
     grape = grape ?: "",
     gooseberry = gooseberry ?: "",
@@ -70,43 +73,57 @@ private fun SeedlingsDbModel.toEntity() = Seedlings(
 )
 
 //--------------- map weather models ----------------
+
+
 fun convertWeatherDtoToDbModel(weatherItemDto: WeatherItemDto): CurrentWeatherDbModel {
     val currentWeather = weatherItemDto.current
     val location = "${weatherItemDto.location.name}, ${weatherItemDto.location.region}"
-    return  CurrentWeatherDbModel(
+    return CurrentWeatherDbModel(
         id = 132,
         location = location,
         lastUpdate = replaceDate(currentWeather.lastUpdate),
-        temperature = currentWeather.temperature,
+        temperature = String.format(CELSIUS, currentWeather.temperature.convertToString()),
         condition = currentWeather.condition.toDbmodel(),
         wind = convertKmhToMc(currentWeather.wind),
         humidity = currentWeather.humidity,
         cloud = currentWeather.cloud,
-        feelsLike = currentWeather.feelsLike.toInt()
+        feelsLike = String.format(CELSIUS, currentWeather.feelsLike.convertToString())
     )
 
 }
 
-private fun WeatherDayDbModel.toEntity()= Day(
-    date=date,
-    maxTemp=maxTemperature,
-    minTemp = minTemperature,
-    chanceRain = chanceRain,
-    condition=condition.toEntity(),
+private fun Float.toIntToString() = this.toInt().toString()
+
+private fun Float.convertToString(): String {
+    val result = this.toInt()
+    if (result < 0) {
+        return "$result"
+    }
+    return "+$result"
+}
+
+private fun WeatherDayDbModel.toEntity() = Day(
+    date = formattedDate(date),
+    avgTemperature = String.format("${minTemperature}..${maxTemperature} ℃"),
+    wind = "$wind $MC",
+    humidity = "$humidity $PERCENT",
+    chanceRain = "$chanceRain $PERCENT",
+    chanceSnow = "$chanceSnow $PERCENT",
+    condition = condition.toEntity(),
     astro = astro.toEntity()
 )
 
-fun HoursDbModel.toEntity()=Hour(
-    time=time,
-    temperature=temperature,
-    conditionIcon=conditionIcon
+fun HoursDbModel.toEntity() = Hour(
+    time = time,
+    temperature = String.format(CELSIUS, temperature),
+    conditionIcon = conditionIcon
 )
 
-fun List<HoursDbModel>.convertDbToEntity()= map { it.toEntity() }
+fun List<HoursDbModel>.convertDbToEntity() = map { it.toEntity() }
 
-fun mapDayListDbModelToEntity(dayWithHoursDbModel: List<DayWithHoursDbModel>): List<WeatherDayWithHours>{
+fun mapDayListDbModelToEntity(dayWithHoursDbModel: List<DayWithHoursDbModel>): List<WeatherDayWithHours> {
     val list = mutableListOf<WeatherDayWithHours>()
-    for (dayWithH in dayWithHoursDbModel){
+    for (dayWithH in dayWithHoursDbModel) {
         list.add(
             WeatherDayWithHours(
                 dayWithH.weatherDayDbModel.toEntity(),
@@ -117,18 +134,18 @@ fun mapDayListDbModelToEntity(dayWithHoursDbModel: List<DayWithHoursDbModel>): L
     return list.toList()
 }
 
-fun CurrentWeatherDbModel.toEntity() =CurrentWeather(
-    location =location,
-    lastUpdate=lastUpdate,
-    temperature=temperature,
-    condition=condition.toEntity(),
-    wind=wind,
-    humidity=humidity,
-    cloud=cloud,
-    feelsLike=feelsLike
-    )
+fun CurrentWeatherDbModel.toEntity() = CurrentWeather(
+    location = location,
+    lastUpdate = lastUpdate,
+    temperature = temperature,
+    condition = condition.toEntity(),
+    wind = "$wind $MC",
+    humidity = "$humidity $PERCENT",
+    cloud = "$cloud $PERCENT",
+    feelsLike = feelsLike
+)
 
-fun mapDtoHoursListToDbModelList(weatherItemDto: WeatherItemDto): List<HoursDbModel>{
+fun mapDtoHoursListToDbModelList(weatherItemDto: WeatherItemDto): List<HoursDbModel> {
     val dayWithHoursList = weatherItemDto.forecast.forecastday
     val hoursList = dayWithHoursList.flatMap { it.hour }.toList()
     val housrListDbModel = mutableListOf<HoursDbModel>()
@@ -138,7 +155,7 @@ fun mapDtoHoursListToDbModelList(weatherItemDto: WeatherItemDto): List<HoursDbMo
             id = ++countId,
             dayId = cutDateToDay(hour.time),
             time = cutDateToHour(hour.time),
-            temperature = hour.temperature,
+            temperature = hour.temperature.convertToString(),
             conditionIcon = hour.condition.icon
         )
         housrListDbModel.add(itemHour)
@@ -153,18 +170,18 @@ fun mapDtoDayListToDbModelList(weatherItemDto: WeatherItemDto): List<WeatherDayD
 
 private fun DayWithHoursDto.toDbModel() = WeatherDayDbModel(
     date = date,
-    maxTemperature = day.maxtemp,
-    minTemperature = day.mintemp,
+    maxTemperature = day.maxtemp.convertToString(),
+    minTemperature = day.mintemp.convertToString(),
+    wind = convertKmhToMc(day.wind).toString(),
+    humidity = day.humidity.toIntToString(),
     chanceRain = day.chanceRain,
+    chanceSnow = day.chanceSnow,
     condition = day.condition.toDbmodel(),
     astro = astro.toDbModel()
 )
 
 private fun cutDateToHour(date: String) = date.split(" ")[1]
 private fun cutDateToDay(date: String) = date.split(" ")[0]
-
-
-
 
 
 private fun ConditionsDto.toDbmodel() = ConditionDbModel(
@@ -178,20 +195,14 @@ private fun ConditionDbModel.toEntity() = Condition(
 )
 
 
-
-
-
-
-
-
 private fun AstroDto.toDbModel() = AstroDbModel(
     sunrise = sunrise,
     sunset = sunset
 )
 
 private fun AstroDbModel.toEntity() = Astro(
-    sunrise = sunrise,
-    sunset = sunset
+    sunrise = formattedHour(sunrise),
+    sunset = formattedHour(sunset)
 )
 
 private fun convertKmhToMc(wind: Float): Int {
@@ -199,14 +210,38 @@ private fun convertKmhToMc(wind: Float): Int {
 }
 
 
-private fun replaceDate(string: String): String {
-    val tr = string.split(" ")
-    return tr[1] + tr[0]
+private fun replaceDate(string: String): String = try {
+    val df = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.ENGLISH)
+    val date = df.parse(string)
+    val forDay = SimpleDateFormat(/* pattern = */ "HH:mm dd MMM, EE", Locale.getDefault())
+    date?.let { forDay.format(it) }.toString()
+} catch (e: Exception){
+    string
 }
 
-//private fun replaceDateFormat(string: String): String{
-//    val formatter = SimpleDateFormat("HH^mm dd-M-yyyy", Locale.ROOT)
-//
-//    val date = formatter.parse(string)
-//    return date.toString()
-//}
+private fun formattedDate(dataDate: String): String =try {
+    val df = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
+    val date = df.parse(dataDate)
+    val forDay = SimpleDateFormat(/* pattern = */ "dd MMM, EE", Locale.getDefault())
+    date?.let { forDay.format(it) }.toString()
+} catch (e: Exception){
+    dataDate
+}
+
+private fun formattedMoonDate(dataDate: String): String = try {
+    val df = SimpleDateFormat("dd-MM-yy", Locale.ENGLISH)
+    val date = df.parse(dataDate)
+    val forDay = SimpleDateFormat(/* pattern = */ "dd MMM EE", Locale.getDefault())
+    date?.let { forDay.format(it) }.toString()
+    } catch (e: Exception) {
+    dataDate
+    }
+
+private fun formattedHour(hour: String): String = try {
+    val hf = SimpleDateFormat("hh:mm aa", Locale.ENGLISH)
+    val hours = hf.parse(hour)
+    val forHour = SimpleDateFormat(/* pattern = */ "HH:mm", Locale.getDefault())
+    hours?.let { forHour.format(it) }.toString()
+} catch (e: Exception){
+    hour
+}

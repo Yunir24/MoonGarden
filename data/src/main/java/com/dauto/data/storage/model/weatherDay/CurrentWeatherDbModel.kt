@@ -22,5 +22,5 @@ data class CurrentWeatherDbModel (
 
     val cloud: Int,
 
-    val feelsLike: Int,
+    val feelsLike: String,
         )

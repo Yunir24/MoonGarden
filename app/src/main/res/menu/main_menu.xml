@@ -3,14 +3,14 @@
     <item
         android:id="@+id/weatherDetailFragment"
         android:icon="@drawable/ic_baseline_cloud_24"
-        android:title="Прогноз" />
+        android:title="@string/weather_item_icon" />
     <item
         android:id="@+id/mainFragment"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_home_24"
-        android:title="Главная" />
+        android:title="@string/main_item_icon" />
     <item
         android:id="@+id/moonCalendarFragment"
         android:icon="@drawable/baseline_yard_black_24"
-        android:title="Лунный календарь" />
+        android:title="@string/moon_item_icon" />
 </menu>

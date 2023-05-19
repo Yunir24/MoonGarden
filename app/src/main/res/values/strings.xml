@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">MoonGarden</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="test_description">После бесконечных майских посевов, посадок, высадки рассады в июне можно немного расслабиться и, оглянувшись вокруг, полюбоваться садом, богато украшенным цветущими травянистыми многолетниками, декоративными кустарниками. Они настраивают нас на позитив, которого нам сейчас так не хватает.</string>
     <string name="test_escape">\n \n \n \n \n</string>
@@ -26,9 +25,39 @@
     <string name="grape">Виноград</string>
     <string name="fruit_trees">Плодовые деревья</string>
     <string name="grafting">Прививка</string>
-    <string name="rooting_digging">Укоренение черенков, прикапывание побегов</string>
+    <string name="rooting_digging">Укоренение черенков, \n прикапывание побегов</string>
     <string name="seedlings">Дни для посадки саженцев, черенкования и прививок</string>
     <string name="default_last_update">22:00 24-12-12</string>
-    <string name="default_location">Ufa, Bashkortostan</string>
+    <string name="default_location">Askarovo, Bashkortostan</string>
     <string name="update">Обновить</string>
+    <string name="divider_helper">Divider</string>
+    <string name="test_text_moon">Весы — знак Зодиака средней плодородности (Дни Цветка).
+        \n\nВ огороде — посадка огурцов, бобовых, зеленых, корнеплодных культур, картофеля. Можно высаживать рассаду капусты белокочанной, цветной, брокколи, прореживать всходы, сеять сидераты. Подкормка растений, полив, рыхление, пикировка.
+        \n\nЦветоводам — хорошие дни для посадки многолетних цветов, однолетних, клубнелуковичных, декоративных кустарников и роз. Укоренение черенков.
+        \n\n Не рекомендуется — прививка, обработка растений ядохимикатами В саду — посадка плодовых деревьев (особенно косточковых абрикоса, вишни, сливы), ягодных кустарников, винограда, малины, посев газонных трав. Формирующая обрезка. Размножение ягодных кустарников черенками, отводками и земляники усами. Прищипка точек роста у черешни на побегах длиной не менее 15-20 см.
+        \n\nЗаготовки — заготовка цветков лекарственных растений</string>
+    <string name="feels_like">Ощущается как</string>
+    <string name="cloudy_tv">Облачность</string>
+    <string name="main_item_icon">Главная</string>
+    <string name="moon_item_icon">Лунный календарь</string>
+    <string name="weather_item_icon">Прогноз</string>
+    <string name="no_internet_attention">"Нет интернета! Невозможно обновить прогноз"</string>
+    <string name="nuber_test_row">1, 2, 6, 13, 14, 15, 16, 17, 24, 25, 28, 29, 30</string>
+
+<!--Location message for user-->
+    <string name="found_location">Геолокация определена</string>
+    <string name="update_message">Данные обновляются</string>
+    <string name="not_found_location">Геолокация не определена</string>
+    <string name="deny_location">Вы запретили доступ к местопложению. Включите в настройках приложения.</string>
+    <string name="turn_on_gps">Геолокация отключена. Невозможно обновить местоположение.</string>
+    <string name="today_calendar_info">Лунный календарь на сегодня</string>
+    <string name="titile_calendar_fragment">Лунный календарь на месяц</string>
+    <string name="chance_rain">Вероятность осадков</string>
+    <string name="wind_speed">Ветер</string>
+    <string name="humidity_precent">Влажность</string>
+    <string name="sunrise_title">Восход</string>
+    <string name="sunset_title">Закат</string>
+    <string name="condition_state">Ясно</string>
+    <string name="last_update_title">Последнее обновление:</string>
+
 </resources>

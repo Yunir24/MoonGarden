@@ -8,7 +8,7 @@ data class CurrentWeatherDto(
     val lastUpdate: String,
 
     @SerializedName("temp_c")
-    val temperature: String,
+    val temperature: Float,
 
     @SerializedName("condition")
     val condition: ConditionsDto,

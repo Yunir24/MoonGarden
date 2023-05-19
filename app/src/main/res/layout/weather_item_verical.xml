@@ -2,10 +2,8 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:backgroundTint="#00ACC1"
     app:cardCornerRadius="8dp"
     app:cardUseCompatPadding="true">
 
@@ -17,34 +15,185 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/textView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_margin="8dp"
+            android:contentDescription="@string/divider_helper"
+            app:layout_constraintBottom_toBottomOf="@+id/currentDateTV"
+            app:layout_constraintStart_toEndOf="@+id/currentDateTV"
+            app:layout_constraintTop_toTopOf="@+id/currentDateTV"
             tools:srcCompat="@drawable/ic_baseline_cloud_24" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/chanceRainTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="22dp"
-            android:text="TextView"
+            android:drawablePadding="4dp"
+            app:drawableStartCompat="@drawable/rainy_20px"
+            app:layout_constraintBottom_toTopOf="@id/guidelineHorizontalHelper"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="@id/guidelineVerticalHelper"
+            app:layout_constraintTop_toBottomOf="@id/rainChanceCainTV"
+            tools:text=" 0 %" />
 
+        <TextView
+            android:id="@+id/rainChanceCainTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/chance_rain"
+            android:textSize="12sp"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/chanceRainTV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guidelineVerticalHelper"
+            app:layout_constraintTop_toBottomOf="@+id/humidityTV" />
+
+        <TextView
+            android:id="@+id/windChainTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wind_speed"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@id/windTV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guidelineVerticalHelper"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread" />
+
+        <TextView
+            android:id="@+id/humidityChainTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/humidity_precent"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/humidityTV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guidelineVerticalHelper"
+            app:layout_constraintTop_toBottomOf="@+id/windTV" />
+
+        <TextView
+            android:id="@+id/windTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:drawablePadding="4dp"
+            app:drawableStartCompat="@drawable/air_20px"
+            app:layout_constraintBottom_toTopOf="@id/humidityChainTV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guidelineVerticalHelper"
+            app:layout_constraintTop_toBottomOf="@id/windChainTV"
+            tools:text="22.3 m/c" />
+
+        <TextView
+            android:id="@+id/humidityTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="4dp"
+            app:drawableStartCompat="@drawable/water_drop_20px"
+            app:layout_constraintBottom_toTopOf="@id/rainChanceCainTV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guidelineVerticalHelper"
+            app:layout_constraintTop_toBottomOf="@id/humidityChainTV"
+            tools:text=" 67 %" />
+
+        <TextView
+            android:id="@+id/currentDateTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/sunriseInfoTV"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text=" 23 - 23 - 23" />
+
+        <TextView
+            android:id="@+id/sunriseInfoTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sunrise_title"
+            app:layout_constraintBottom_toTopOf="@+id/sunriseTV"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalHelper"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/currentDateTV" />
+
+        <TextView
+            android:id="@+id/sunriseTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/currentTempTV"
+            app:layout_constraintEnd_toEndOf="@+id/sunriseInfoTV"
+            app:layout_constraintStart_toStartOf="@+id/sunriseInfoTV"
+            app:layout_constraintTop_toBottomOf="@id/sunriseInfoTV"
+            tools:text="05:12" />
+
+        <TextView
+            android:id="@+id/sunsetInfoTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sunset_title"
+            app:layout_constraintBottom_toTopOf="@+id/sunsetTv"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalHelper"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/currentTempTV" />
+
+
+        <TextView
+            android:id="@+id/sunsetTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalHelper"
+            app:layout_constraintEnd_toEndOf="@+id/sunsetInfoTV"
+            app:layout_constraintStart_toStartOf="@+id/sunsetInfoTV"
+            app:layout_constraintTop_toBottomOf="@+id/sunsetInfoTV"
+            tools:text="20:12" />
+
+        <TextView
+            android:id="@+id/currentTempTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="14dp"
+            style="@style/TextAppearance.Material3.HeadlineLarge"
+            app:layout_constraintBottom_toTopOf="@+id/sunsetInfoTV"
+            app:layout_constraintEnd_toStartOf="@id/guidelineVerticalHelper"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sunriseTV"
+            tools:text="+4..+12" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineHorizontalHelper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.65" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineVerticalHelper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.65" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#337b7b"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guidelineHorizontalHelper"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/horizontal_R_C_View"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_margin="12dp"
+            android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView"
+            app:layout_constraintTop_toBottomOf="@id/guidelineHorizontalHelper"
             tools:listitem="@layout/weather_item_horizontal" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

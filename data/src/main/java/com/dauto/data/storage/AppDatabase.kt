@@ -26,7 +26,7 @@ abstract class AppDatabase : RoomDatabase() {
 
     companion object {
 
-        private const val DB_NAME = "moon_calendar2.db"
+        private const val DB_NAME = "moon.db"
         private var INSTANCE: AppDatabase? = null
         private val lock = Any()
 
@@ -40,7 +40,7 @@ abstract class AppDatabase : RoomDatabase() {
                     return it
                 }
                 val db = Room.databaseBuilder(application, AppDatabase::class.java, DB_NAME)
-                    .createFromAsset("sul/moon_calendar2.db")
+                    .createFromAsset("database/moon_calendar_1_0.db")
                     .build()
                 INSTANCE = db
                 return db

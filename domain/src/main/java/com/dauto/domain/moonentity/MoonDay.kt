@@ -6,6 +6,8 @@ data class MoonDay(
 
     val moonPhase: String,
 
+    val moonInfo: String,
+
     val description: String
     )
 

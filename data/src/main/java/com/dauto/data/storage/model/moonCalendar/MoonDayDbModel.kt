@@ -14,7 +14,9 @@ data class MoonDayDbModel(
     @ColumnInfo(name = "month")
     val month: String?,
     @ColumnInfo("moon_phase")
-    var moonPhase: String?,
+    val moonPhase: String?,
+    @ColumnInfo("moon_info")
+    val moonInfo: String?,
     @ColumnInfo("backyard")
     val backyard: String?,
     @ColumnInfo("window_sill")
@@ -33,12 +35,12 @@ data class MoonDayDbModel(
 
     operator fun iterator(): List<Pair<String, String?>> {
         return listOf(
-            "backyard" to backyard,
-            "sill" to windowSill,
-            "green" to greenHouses,
-            "flower" to flowerGrower,
-            "notRec" to notRecommended,
-            "inGar" to inTheGarden,
-            "harv" to harvesting,
+            "backyard" to backyard?.trim(),
+            "sill" to windowSill?.trim(),
+            "green" to greenHouses?.trim(),
+            "flower" to flowerGrower?.trim(),
+            "notRec" to notRecommended?.trim(),
+            "inGar" to inTheGarden?.trim(),
+            "harv" to harvesting?.trim(),
         )
     }}

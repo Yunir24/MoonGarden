@@ -14,7 +14,7 @@ interface ApiService {
         @Query("q")q: String,
         @Query("lang") lang: String,
         @Query("key") key: String,
-        @Query("days") days: String
+        @Query("days") dayCount: String
     ): WeatherItemDto
 
 

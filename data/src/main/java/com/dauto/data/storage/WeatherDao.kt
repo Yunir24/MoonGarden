@@ -2,6 +2,7 @@ package com.dauto.data.storage
 
 import androidx.room.*
 import com.dauto.data.storage.model.weatherDay.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface WeatherDao {
@@ -49,10 +50,10 @@ interface WeatherDao {
     @Query(
         "SELECT * FROM weather_day"
     )
-    suspend fun getForecastWeather(): List<DayWithHoursDbModel>
+    fun getForecastWeather(): Flow<List<DayWithHoursDbModel>>
 
     @Query("SELECT * FROM current_weather WHERE id = 132")
-    suspend fun getCurrentWeather(): CurrentWeatherDbModel
+    fun getCurrentWeather(): Flow<CurrentWeatherDbModel>
 
 
     @Query("DELETE FROM hours_table")

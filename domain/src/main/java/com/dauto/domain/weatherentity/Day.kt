@@ -4,14 +4,18 @@ data class Day(
 
     val date: String,
 
-    val maxTemp: String,
+    val avgTemperature: String,
 
-    val minTemp: String,
+    val wind: String,
 
-    val chanceRain: Int,
+    val humidity: String,
+
+    val chanceRain: String,
+
+    val chanceSnow: String,
 
     val condition: Condition,
 
     val astro: Astro,
 
-)
+    )

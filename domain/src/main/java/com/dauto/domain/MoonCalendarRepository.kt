@@ -4,6 +4,7 @@ import com.dauto.domain.moonentity.MonthAndDays
 import com.dauto.domain.moonentity.MoonDay
 import com.dauto.domain.weatherentity.CurrentWeather
 import com.dauto.domain.weatherentity.WeatherDayWithHours
+import kotlinx.coroutines.flow.Flow
 
 interface MoonCalendarRepository {
 
@@ -14,11 +15,11 @@ interface MoonCalendarRepository {
 
     suspend fun getMoonDayList(month: String): List<MoonDay>
 
-    suspend fun getCurrentWeather(): CurrentWeather
+    fun getCurrentWeather(): Flow<CurrentWeather>
 
-    suspend fun getWeatherList(): List<WeatherDayWithHours>
+    fun getWeatherList(): Flow<List<WeatherDayWithHours>>
 
-    suspend fun updateCurrentWeather()
+    suspend fun updateCurrentWeather(location: String)
 
 
 }

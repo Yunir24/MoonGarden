@@ -7,7 +7,7 @@ data class HoursWeatherDto (
     @SerializedName("time")
     val time: String,
     @SerializedName("temp_c")
-    val temperature: String,
+    val temperature: Float,
     @SerializedName("condition")
     val condition: ConditionsDto
 )

@@ -2,13 +2,12 @@ package com.dauto.moongarden.fragments
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.dauto.moongarden.MainViewModel
-import com.dauto.moongarden.R
 import com.dauto.moongarden.adapters.ViewPagerAdapter
 import com.dauto.moongarden.databinding.FragmentMoonCalendarBinding
 import com.google.android.material.tabs.TabLayoutMediator
@@ -35,27 +34,14 @@ class MoonCalendarFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        Log.d("viewCheck", "calendar create")
         _binding = FragmentMoonCalendarBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        selectMonthInfo()
-//        sharedViewModel.getMonthInfo("january")
+        sharedViewModel.getMonthInfo()
         initViewPager()
-
-
-//        with(binding){
-//            checkDayInfo.setOnClickListener {
-//                selectDayList()
-//            }
-//            checkMonthInfo.setOnClickListener {
-//                selectMonthInfo()
-//            }
-//        }
-
     }
 
     private fun initViewPager()= with(binding){
@@ -65,19 +51,6 @@ class MoonCalendarFragment : Fragment() {
             t,p-> t.text = listFragmentName[p]
         }.attach()
     }
-
-//    private fun selectMonthInfo(){
-//        requireActivity().supportFragmentManager.beginTransaction()
-//            .replace(R.id.sideFragmentContainer, MonthFragment.newInstance())
-//            .commit()
-//    }
-//
-//    private fun selectDayList(){
-//        requireActivity().supportFragmentManager.beginTransaction()
-//            .replace(R.id.sideFragmentContainer, DayFragment.newInstance())
-//            .commit()
-//    }
-
 
     override fun onDestroy() {
         Log.d("viewCheck", "calendar death")

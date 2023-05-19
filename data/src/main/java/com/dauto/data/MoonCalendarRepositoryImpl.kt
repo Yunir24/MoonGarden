@@ -9,13 +9,11 @@ import com.dauto.domain.moonentity.MonthAndDays
 import com.dauto.domain.moonentity.MoonDay
 import com.dauto.domain.weatherentity.CurrentWeather
 import com.dauto.domain.weatherentity.WeatherDayWithHours
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 class MoonCalendarRepositoryImpl(application: Application) : MoonCalendarRepository {
 
-    private val tokken =  BuildConfig.TOKEN
-    private val querry = "53.334301, 58.518090"
-    private val dayz = "5"
-    private val lang = "ru"
 
     private val calendarDao = AppDatabase.getInstance(application).dao()
     private val weatherDao = AppDatabase.getInstance(application).weatherDao()
@@ -38,26 +36,27 @@ class MoonCalendarRepositoryImpl(application: Application) : MoonCalendarReposit
 
     }
 
-    override suspend fun getCurrentWeather(): CurrentWeather {
-//        uploadWeather() 35/34
-        return weatherDao.getCurrentWeather().toEntity()
-
+    override fun getCurrentWeather(): Flow<CurrentWeather> {
+        return weatherDao.getCurrentWeather()
+            .map{ it.toEntity()}
     }
 
-    override suspend fun getWeatherList(): List<WeatherDayWithHours> {
-        return mapDayListDbModelToEntity(weatherDao.getForecastWeather())
-    }
-
-
-    override suspend fun updateCurrentWeather() {
-        uploadWeather()
+    override  fun getWeatherList(): Flow<List<WeatherDayWithHours>> {
+        return weatherDao.getForecastWeather().map {
+            mapDayListDbModelToEntity(it)
+        }
     }
 
 
-    private suspend fun uploadWeather() {
+    override suspend fun updateCurrentWeather(location: String) {
+        uploadWeather(location)
+    }
+
+
+    private suspend fun uploadWeather(location: String) {
 
         try {
-            val weather = apiService.getCurrentWeather(querry, lang, tokken, dayz)
+            val weather = apiService.getCurrentWeather(location, LANG, TOKEN, DAYCOUNT)
             val current = convertWeatherDtoToDbModel(weather)
             val daylist = mapDtoDayListToDbModelList(weather)
             val hourList = mapDtoHoursListToDbModelList(weather)
