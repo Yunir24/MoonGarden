@@ -13,10 +13,15 @@ import com.dauto.moongarden.adapters.WeatherVerticalRCAdapter
 import com.dauto.moongarden.databinding.FragmentWeatherDetailBinding
 import com.dauto.moongarden.location.LocationState
 import com.dauto.moongarden.location.LocationStateListener
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.analytics.ktx.logEvent
+import com.google.firebase.ktx.Firebase
 
 
 class WeatherDetailFragment : Fragment() {
 
+    private lateinit var analytics: FirebaseAnalytics
     private val sharedViewModel: MainViewModel by activityViewModels()
     private lateinit var locationStateListener: LocationStateListener
     private var currentLocation: String = MainFragment.LOCATION_DEFAULT_VALUE
@@ -48,6 +53,7 @@ class WeatherDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        analytics = Firebase.analytics
         _binding = FragmentWeatherDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -57,6 +63,10 @@ class WeatherDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val verticalAdapter = WeatherVerticalRCAdapter()
         binding.vertivalRCView.adapter=verticalAdapter
+        analytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW) {
+            param(FirebaseAnalytics.Param.SCREEN_NAME, "WeatherDetailFragment")
+            param(FirebaseAnalytics.Param.SCREEN_CLASS, "WeatherDetailFragment")
+        }
         sharedViewModel.forecastWeatherList.observe(viewLifecycleOwner){
             verticalAdapter.submitList(it)
             binding.swipeLayout.isRefreshing=false

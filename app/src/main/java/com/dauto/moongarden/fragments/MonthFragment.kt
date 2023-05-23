@@ -9,11 +9,17 @@ import androidx.fragment.app.activityViewModels
 import com.dauto.domain.moonentity.MonthAndDays
 import com.dauto.moongarden.MainViewModel
 import com.dauto.moongarden.databinding.FragmentMonthBinding
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.analytics.ktx.logEvent
+import com.google.firebase.ktx.Firebase
 
 
 class MonthFragment : Fragment() {
     private val sharedViewModel: MainViewModel by activityViewModels()
 
+
+    private lateinit var analytics: FirebaseAnalytics
     private var _binding: FragmentMonthBinding? = null
     private val binding: FragmentMonthBinding
         get() = _binding ?: throw RuntimeException("FragmentMonthBinding is not exist")
@@ -23,16 +29,23 @@ class MonthFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        analytics = Firebase.analytics
         _binding = FragmentMonthBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        analytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW) {
+            param(FirebaseAnalytics.Param.SCREEN_NAME, "MonthFragment")
+            param(FirebaseAnalytics.Param.SCREEN_CLASS, "MonthFragment")
+        }
         sharedViewModel.moonMonth.observe(viewLifecycleOwner) {
             initViews(it)
         }
     }
+
+
 
     private fun initViews(monthAndDays: MonthAndDays) {
         with(binding) {

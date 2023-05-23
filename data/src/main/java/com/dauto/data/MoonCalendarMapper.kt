@@ -96,7 +96,7 @@ private fun Float.toIntToString() = this.toInt().toString()
 
 private fun Float.convertToString(): String {
     val result = this.toInt()
-    if (result < 0) {
+    if (result <= 0) {
         return "$result"
     }
     return "+$result"
@@ -222,7 +222,7 @@ private fun replaceDate(string: String): String = try {
 private fun formattedDate(dataDate: String): String =try {
     val df = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
     val date = df.parse(dataDate)
-    val forDay = SimpleDateFormat(/* pattern = */ "dd MMM, EE", Locale.getDefault())
+    val forDay = SimpleDateFormat(/* pattern = */ "EE, dd MMM", Locale.getDefault())
     date?.let { forDay.format(it) }.toString()
 } catch (e: Exception){
     dataDate
@@ -231,7 +231,7 @@ private fun formattedDate(dataDate: String): String =try {
 private fun formattedMoonDate(dataDate: String): String = try {
     val df = SimpleDateFormat("dd-MM-yy", Locale.ENGLISH)
     val date = df.parse(dataDate)
-    val forDay = SimpleDateFormat(/* pattern = */ "dd MMM EE", Locale.getDefault())
+    val forDay = SimpleDateFormat(/* pattern = */ "EE, dd MMM", Locale.getDefault())
     date?.let { forDay.format(it) }.toString()
     } catch (e: Exception) {
     dataDate

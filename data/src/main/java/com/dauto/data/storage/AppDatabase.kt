@@ -17,7 +17,7 @@ import com.dauto.data.storage.model.weatherDay.WeatherDayDbModel
         CurrentWeatherDbModel::class,
         HoursDbModel::class,
         WeatherDayDbModel::class
-    ], version = 1
+    ], version = 1, exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
 

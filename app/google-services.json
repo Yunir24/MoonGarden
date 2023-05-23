@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1005122592198",
+    "project_id": "moongarden-e312f",
+    "storage_bucket": "moongarden-e312f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1005122592198:android:74f8b054ac1a00b48b26c7",
+        "android_client_info": {
+          "package_name": "com.dauto.moongarden"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1005122592198-iecitnos6ah4i566p0mcjep6p2h2lvfj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBn2IhEwiO9q2OdryM6BAjjbDo5yn9AHcU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1005122592198-iecitnos6ah4i566p0mcjep6p2h2lvfj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

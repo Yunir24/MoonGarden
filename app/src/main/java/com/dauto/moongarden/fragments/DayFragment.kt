@@ -9,12 +9,17 @@ import androidx.fragment.app.activityViewModels
 import com.dauto.moongarden.adapters.DaysAdapter
 import com.dauto.moongarden.MainViewModel
 import com.dauto.moongarden.databinding.FragmentDayBinding
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.analytics.ktx.logEvent
+import com.google.firebase.ktx.Firebase
 
 
 class DayFragment : Fragment() {
     private val sharedViewModel: MainViewModel by activityViewModels()
     private val daysAdapter = DaysAdapter()
 
+    private lateinit var analytics: FirebaseAnalytics
     private var _binding: FragmentDayBinding? = null
     private val binding: FragmentDayBinding
         get() = _binding ?: throw RuntimeException("FragmentDayBinding is not exist")
@@ -24,6 +29,7 @@ class DayFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        analytics = Firebase.analytics
         _binding = FragmentDayBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -31,6 +37,11 @@ class DayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        analytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW) {
+            param(FirebaseAnalytics.Param.SCREEN_NAME, "DayFragment")
+            param(FirebaseAnalytics.Param.SCREEN_CLASS, "DayFragment")
+        }
         binding.dayListRcView.adapter=daysAdapter
         sharedViewModel.moonMonth.observe(viewLifecycleOwner){
             daysAdapter.submitList(it.daysList)

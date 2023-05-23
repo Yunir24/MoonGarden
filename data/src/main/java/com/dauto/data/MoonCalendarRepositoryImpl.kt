@@ -1,7 +1,6 @@
 package com.dauto.data
 
 import android.app.Application
-import android.util.Log
 import com.dauto.data.network.ApiFactory
 import com.dauto.data.storage.AppDatabase
 import com.dauto.domain.MoonCalendarRepository
@@ -61,8 +60,7 @@ class MoonCalendarRepositoryImpl(application: Application) : MoonCalendarReposit
             val daylist = mapDtoDayListToDbModelList(weather)
             val hourList = mapDtoHoursListToDbModelList(weather)
             weatherDao.insertWeatherItem(current, daylist, hourList)
-        } catch (e: Exception) {
-            Log.d("DebugApp", e.toString())
+        } catch (_: Exception) {
         }
 
     }

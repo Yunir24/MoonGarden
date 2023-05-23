@@ -30,6 +30,10 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
 import com.google.android.gms.tasks.CancellationTokenSource
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.analytics.ktx.logEvent
+import com.google.firebase.ktx.Firebase
 
 
 class MainFragment : Fragment() {
@@ -41,7 +45,7 @@ class MainFragment : Fragment() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var launcher: ActivityResultLauncher<String>
     private lateinit var locationStateListener: LocationStateListener
-
+    private lateinit var analytics: FirebaseAnalytics
     private var currentLocationExist = false
     private var isChangeLocation = false
 
@@ -85,6 +89,7 @@ class MainFragment : Fragment() {
         if (!currentLocationExist) {
             checkPermission()
         }
+        analytics = Firebase.analytics
         setClickListener()
         observeViewModel()
         sharedViewModel.getMoonDay()
@@ -93,6 +98,10 @@ class MainFragment : Fragment() {
     private fun setClickListener() {
         binding.locationTV.setOnClickListener {
             getLocation()
+            analytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM){
+                param(FirebaseAnalytics.Param.ITEM_ID, binding.locationTV.id.toString())
+                param(FirebaseAnalytics.Param.ITEM_NAME,"Location changed!")
+            }
         }
         binding.buttonGetWeather.setOnClickListener {
             sharedViewModel.updateCurrentWeather(currentLocation)
@@ -100,8 +109,6 @@ class MainFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-//        lifecycleScope.launch {
-//            repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 sharedViewModel.currentWeather.observe(viewLifecycleOwner)
                     {
                         when (it) {
@@ -127,9 +134,7 @@ class MainFragment : Fragment() {
                                 }
                             }
                         }
-//                    }
             }
-//        }
         sharedViewModel.moonDay.observe(viewLifecycleOwner) {
             binding.moonPhaseInfoTV.text = it.moonInfo
             binding.moonDayInfoTV.text = it.description
@@ -167,6 +172,11 @@ class MainFragment : Fragment() {
                     }
 
                     override fun onClickNegative() {
+                        analytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM){
+                            param(FirebaseAnalytics.Param.ITEM_ID, "Cansel GPS")
+                            param(FirebaseAnalytics.Param.ITEM_NAME, "out GPS")
+                            param(FirebaseAnalytics.Param.CONTENT_TYPE, "gps disable")
+                        }
                         isChangeLocation = false
                         locationStateListener.showState(LocationState.DISABLED_GPS)
                     }
@@ -227,7 +237,7 @@ class MainFragment : Fragment() {
                     sharedPref.edit()
                         .putBoolean(LOCATION_SAVE_KEY, true)
                         .apply()
-                }
+                }else{checkPermission()}
 
             }
 
