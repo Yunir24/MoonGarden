@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "152004927214",
+    "project_id": "rustoremoongarden",
+    "storage_bucket": "rustoremoongarden.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:152004927214:android:8f4c13894b0e52babcddff",
+        "android_client_info": {
+          "package_name": "com.dauto.moongarden.appMarket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "152004927214-djhhkdsp8gnfbv7qd9i2p1p899vlciss.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCijKrG5WD0ROfwkQQhhAmE1BhjgeQjQ8I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "152004927214-djhhkdsp8gnfbv7qd9i2p1p899vlciss.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
